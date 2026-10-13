@@ -9,7 +9,7 @@ export const Login = ({setIsLoggedIn}) => {
 
 
   //proba
-  const myUsername = "anyud"
+  const myUsername = "mate"
   const Mypw = 123
 
   const handleLogin = () =>{
