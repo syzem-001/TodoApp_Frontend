@@ -1,24 +1,24 @@
 import { Button, InputGroup, Label, TextField } from '@heroui/react'
 import React from 'react'
 import { useState } from 'react'
+import { login } from '../api'
 
 export const Login = ({setIsLoggedIn}) => {
   const [username,setUserName] = useState('')
-  const[pw,setPw] = useState('')
+  const[password,setPassword] = useState('')
   const [msg, setMsg] = useState('')
 
-
-  //proba
-  const myUsername = "mate"
-  const Mypw = 123
-
-  const handleLogin = () =>{
-    console.log(username,pw)
-    if(username == myUsername && pw == Mypw){
-        setIsLoggedIn(true)
-    }
-    else{
-      setMsg('Helytelen felhasználónév vagy jelszó')
+  const handleLogin = async () =>{
+    console.log(username,password)
+    try {
+      
+      const data = await login(username,password)
+      setIsLoggedIn(data.success)
+      console.log(data);
+      
+    } catch (error) {
+      console.log(error);
+      setMsg(error.rs?.data?.msg || 'Nem csikerült kapcsolódni a szerverhez! XD')
     }
   }
 
@@ -37,7 +37,7 @@ export const Login = ({setIsLoggedIn}) => {
           <Label>Password</Label>
           <InputGroup fullWidth>
             <InputGroup.Input placeholder="Enter password" type="password"
-            value={pw} onChange={(e)=> setPw(e.target.value) }
+            value={password} onChange={(e)=> setPassword(e.target.value) }
             />
           </InputGroup>
         </TextField>
