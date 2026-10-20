@@ -1,6 +1,6 @@
 import  axios  from "axios"
 import { WiMoonAltWaningCrescent1 } from "react-icons/wi"
-const baseURL  = import.meta.env.VITE_API_URL
+const baseURL  = import.meta.env.VITE_API_URL + '/todos'
 
 
 export const login  = async (username,password) => {
