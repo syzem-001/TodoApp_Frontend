@@ -5,7 +5,7 @@ import { useState } from "react"
 import { Login } from "./components/Login.jsx"
 
 function App() {
-  const[isLoggedIn,setIsLoggedIn] = useState(true) // amugy false
+  const[isLoggedIn,setIsLoggedIn] = useState(false) // amugy false
 
   return (
     <div className="bg-white h-[100vh] min-h-screen relative">
